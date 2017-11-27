@@ -6,12 +6,16 @@ use App\Usuarios;
 use App\Asignaciones;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Mail;
 
 class UserController extends Controller
 {
 	public function login(Request $request){
 		return view('admin-login1');
 	}
+    public function solicitud(Request $request){
+        return view('admin-login2');
+    }
     public function logeo(Request $request){
         $posibles = Usuarios::where('catastro_usuario',$request->catastro_usuario)->where('contrasena',$request->contrasena)->get();
         if (count($posibles)==0) {
@@ -79,6 +83,10 @@ class UserController extends Controller
         return view('usuario-documentos-busqueda', compact('asignaciones', 'titulo_asignacion'));
     }
     public function usuarios_busqueda(Request $request){
+        session_start();
+        if ((!isset($_SESSION['id_login']))||($_SESSION['id_login']!=1)) {
+            return redirect('/login');
+        }
     	$cedula_usuario = $request->p;
     	$admin = Usuarios::where('id','1')->get()[0];
     	$usuarios = Usuarios::where('cedula_usuario',$cedula_usuario)->where('id','<>','1')->paginate(12);
@@ -127,11 +135,19 @@ class UserController extends Controller
 		return redirect()->back()->with('success', 'Usuario eliminado con exito');
     }
     public function asignaciones(Request $request){
+        session_start();
+        if ((!isset($_SESSION['id_login']))||($_SESSION['id_login']!=1)) {
+            return redirect('/login');
+        }
     	$asignaciones = Asignaciones::join('usuarios', 'usuarios.cedula_usuario', '=', 'asignaciones.cedula_usuario_asignacion')->select('asignaciones.*', 'usuarios.nombre_uno_usuario', 'usuarios.apellido_uno_usuario')->paginate(10);
     	$admin = Usuarios::where('id','1')->get()[0];
     	return view('admin-documentos', compact('asignaciones','admin'));
     }
     public function asignaciones_busqueda(Request $request){
+        session_start();
+        if ((!isset($_SESSION['id_login']))||($_SESSION['id_login']!=1)) {
+            return redirect('/login');
+        }
     	$titulo_asignacion = $request->p;
     	$asignaciones = Asignaciones::where('titulo_asignacion','like','%'.$titulo_asignacion.'%')->join('usuarios', 'usuarios.cedula_usuario', '=', 'asignaciones.cedula_usuario_asignacion')->select('asignaciones.*', 'usuarios.nombre_uno_usuario', 'usuarios.apellido_uno_usuario')->paginate(10);
     	$admin = Usuarios::where('id','1')->get()[0];
@@ -163,5 +179,16 @@ class UserController extends Controller
     	$asignaciones = Asignaciones::find($request->id);
 		$asignaciones->delete();
 		return redirect()->back()->with('success', 'Asignación eliminado con exito');
+    }
+    public function solicitud_cuenta(Request $request){
+        $headers  = "MIME-Version: 1.0\n";
+        $headers .= "Content-type: text/plain; charset=iso-8859-1\n";
+        $headers .= "X-Priority: 3\n";
+        $headers .= "X-MSMail-Priority: Normal\n";
+        $headers .= "X-Mailer: php\n";
+        $headers .= "From: \"".$request->cedula."\" <".$request->correo.">\n";
+        mail('efbuitrago95@gmail.com', 'Solicitud de cuenta', 'Solicitud de cuenta para usuario con cedula: '.$request->cedula." Y correo electronico: ".$request->correo , $headers);
+        //sechacienda@sonson-antioquia.gov.co
+        return redirect()->back()->with('success', 'Email enviado con exito');
     }
 }

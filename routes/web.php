@@ -28,3 +28,6 @@ Route::post('/logeo','UserController@logeo');
 Route::get('/logeo_fin','UserController@logeo_fin');
 Route::get('/documentos_usuarios','UserController@documentos_usuarios');
 Route::get('/documentos_usuario','UserController@documentos_usuarios_busqueda');
+
+Route::get('/solicitud','UserController@solicitud');
+Route::post('/solicitud_cuenta','UserController@solicitud_cuenta');

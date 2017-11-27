@@ -6,13 +6,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0">
 
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/plugins.css">
-        <link rel="stylesheet" href="css/main.css">
-        <link rel="stylesheet" href="css/themes.css">
-        <script src="js/vendor/modernizr-3.3.1.min.js"></script>
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/plugins.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/themes.css') }}">
+        <script src="{{ asset('js/vendor/modernizr-3.3.1.min.js') }}"></script>
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
-        <link rel="icon" type="image/png" href="img/favicon.ico">
+        <link rel="icon" type="image/png" href="{{ asset('img/favicon.ico') }}">
     </head>    
 
     <body>
@@ -33,15 +33,16 @@
                     <h2>Acceso</h2>
                 </div>
 
-                <form action="" class="form-horizontal" id="form-login" method="post" accept-charset="utf-8">
+                <form class="form-horizontal" id="form-login" accept-charset="utf-8" action="{{ url('/logeo') }}" method="POST" role="form">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <div class="form-group">
                         <div class="col-xs-12">
-                            <input type="text" id="" name="" class="form-control soloNumero" placeholder="Número de cédula" required>
+                            <input type="text" id="" name="cedula" class="form-control soloNumero" placeholder="Número de cédula" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-xs-12">
-                            <input type="email" id="" name="" class="form-control" placeholder="Correo electrónico" required>
+                            <input type="email" id="" name="correo" class="form-control" placeholder="Correo electrónico" required>
                         </div>
                     </div>
                     <div class="form-group form-actions">
@@ -60,10 +61,10 @@
             </footer>
         </div>
 
-        <script src="js/vendor/jquery-2.2.4.min.js"></script>
-        <script src="js/vendor/bootstrap.min.js"></script>
-        <script src="js/plugins.js"></script>
-        <script src="js/app.js"></script>
+        <script src="{{ asset('js/vendor/jquery-2.2.4.min.js') }}"></script>
+        <script src="{{ asset('js/vendor/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('js/plugins.js') }}"></script>
+        <script src="{{ asset('js/app.js') }}"></script>
     </body>
 </html>
 
