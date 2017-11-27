@@ -16,6 +16,9 @@ namespace Symfony\Component\HttpFoundation\Session\Storage\Handler;
  */
 class MongoDbSessionHandler implements \SessionHandlerInterface
 {
+    /**
+     * @var \Mongo|\MongoClient|\MongoDB\Client
+     */
     private $mongo;
 
     /**

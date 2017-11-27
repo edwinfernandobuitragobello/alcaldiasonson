@@ -18,7 +18,7 @@ use Psy\Shell;
 use Psy\TabCompletion\Matcher\ClassMethodsMatcher;
 use Symfony\Component\Console\Output\StreamOutput;
 
-class ShellTest extends \PHPUnit\Framework\TestCase
+class ShellTest extends \PHPUnit_Framework_TestCase
 {
     private $streams = array();
 

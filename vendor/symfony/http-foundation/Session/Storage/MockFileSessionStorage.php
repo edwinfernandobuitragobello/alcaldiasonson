@@ -24,6 +24,9 @@ namespace Symfony\Component\HttpFoundation\Session\Storage;
  */
 class MockFileSessionStorage extends MockArraySessionStorage
 {
+    /**
+     * @var string
+     */
     private $savePath;
 
     /**

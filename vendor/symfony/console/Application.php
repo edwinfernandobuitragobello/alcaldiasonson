@@ -94,6 +94,9 @@ class Application
     /**
      * Runs the current application.
      *
+     * @param InputInterface  $input  An Input instance
+     * @param OutputInterface $output An Output instance
+     *
      * @return int 0 if everything went fine, or an error code
      *
      * @throws \Exception When running fails. Bypass this when {@link setCatchExceptions()}.
@@ -120,13 +123,15 @@ class Application
         try {
             $e = null;
             $exitCode = $this->doRun($input, $output);
-        } catch (\Exception $e) {
-        } catch (\Throwable $e) {
+        } catch (\Exception $x) {
+            $e = $x;
+        } catch (\Throwable $x) {
+            $e = new FatalThrowableError($x);
         }
 
         if (null !== $e) {
-            if (!$this->catchExceptions || !$e instanceof \Exception) {
-                throw $e;
+            if (!$this->catchExceptions || !$x instanceof \Exception) {
+                throw $x;
             }
 
             if ($output instanceof ConsoleOutputInterface) {
@@ -159,6 +164,9 @@ class Application
 
     /**
      * Runs the current application.
+     *
+     * @param InputInterface  $input  An Input instance
+     * @param OutputInterface $output An Output instance
      *
      * @return int 0 if everything went fine, or an error code
      */
@@ -219,6 +227,11 @@ class Application
         return $exitCode;
     }
 
+    /**
+     * Set a helper set to be used with the command.
+     *
+     * @param HelperSet $helperSet The helper set
+     */
     public function setHelperSet(HelperSet $helperSet)
     {
         $this->helperSet = $helperSet;
@@ -238,6 +251,11 @@ class Application
         return $this->helperSet;
     }
 
+    /**
+     * Set an input definition to be used with this application.
+     *
+     * @param InputDefinition $definition The input definition
+     */
     public function setDefinition(InputDefinition $definition)
     {
         $this->definition = $definition;
@@ -403,6 +421,8 @@ class Application
      *
      * If a command with the same name already exists, it will be overridden.
      * If the command is not enabled it will not be added.
+     *
+     * @param Command $command A Command object
      *
      * @return Command|null The registered command if enabled or null
      */
@@ -656,6 +676,9 @@ class Application
 
     /**
      * Renders a caught exception.
+     *
+     * @param \Exception      $e      An exception instance
+     * @param OutputInterface $output An OutputInterface instance
      */
     public function renderException(\Exception $e, OutputInterface $output)
     {
@@ -795,6 +818,9 @@ class Application
 
     /**
      * Configures the input and output instances based on the user arguments and options.
+     *
+     * @param InputInterface  $input  An InputInterface instance
+     * @param OutputInterface $output An OutputInterface instance
      */
     protected function configureIO(InputInterface $input, OutputInterface $output)
     {
@@ -843,6 +869,10 @@ class Application
      *
      * If an event dispatcher has been attached to the application,
      * events are also dispatched during the life-cycle of the command.
+     *
+     * @param Command         $command A Command instance
+     * @param InputInterface  $input   An Input instance
+     * @param OutputInterface $output  An Output instance
      *
      * @return int 0 if everything went fine, or an error code
      */
@@ -911,6 +941,8 @@ class Application
 
     /**
      * Gets the name of the command based on input.
+     *
+     * @param InputInterface $input The input interface
      *
      * @return string The command name
      */

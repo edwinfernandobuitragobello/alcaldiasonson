@@ -12,7 +12,6 @@
 namespace Symfony\Component\VarDumper\Dumper;
 
 use Symfony\Component\VarDumper\Cloner\Cursor;
-use Symfony\Component\VarDumper\Cloner\Stub;
 
 /**
  * CliDumper dumps variables for command line output.
@@ -495,12 +494,10 @@ class CliDumper extends AbstractDumper
 
     protected function endValue(Cursor $cursor)
     {
-        if (Stub::ARRAY_INDEXED === $cursor->hashType || Stub::ARRAY_ASSOC === $cursor->hashType) {
-            if (self::DUMP_TRAILING_COMMA & $this->flags && 0 < $cursor->depth) {
-                $this->line .= ',';
-            } elseif (self::DUMP_COMMA_SEPARATOR & $this->flags && 1 < $cursor->hashLength - $cursor->hashIndex) {
-                $this->line .= ',';
-            }
+        if (self::DUMP_TRAILING_COMMA & $this->flags && 0 < $cursor->depth) {
+            $this->line .= ',';
+        } elseif (self::DUMP_COMMA_SEPARATOR & $this->flags && 1 < $cursor->hashLength - $cursor->hashIndex) {
+            $this->line .= ',';
         }
 
         $this->dumpLine($cursor->depth, true);

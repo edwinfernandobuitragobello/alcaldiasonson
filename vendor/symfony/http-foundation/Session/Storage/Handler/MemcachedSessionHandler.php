@@ -21,6 +21,9 @@ namespace Symfony\Component\HttpFoundation\Session\Storage\Handler;
  */
 class MemcachedSessionHandler implements \SessionHandlerInterface
 {
+    /**
+     * @var \Memcached Memcached driver
+     */
     private $memcached;
 
     /**
