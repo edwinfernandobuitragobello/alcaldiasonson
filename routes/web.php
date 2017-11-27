@@ -17,8 +17,14 @@ Route::post('/usuarios_crear','UserController@usuarios_crear');
 Route::post('/usuarios_editar','UserController@usuarios_editar');
 Route::get('/usuarios_eliminar/{id?}','UserController@usuarios_eliminar');
 
-Route::get('/asignacion','UserController@asignaciones');
-Route::get('/asignaciones','UserController@asignaciones_busqueda');
+Route::get('/documentos','UserController@asignaciones');
+Route::get('/documento','UserController@asignaciones_busqueda');
 Route::post('/asignaciones_crear','UserController@asignaciones_crear');
 Route::post('/asignaciones_editar','UserController@asignaciones_editar');
 Route::get('/asignaciones_eliminar/{id?}','UserController@asignaciones_eliminar');
+
+Route::get('/login','UserController@login');
+Route::post('/logeo','UserController@logeo');
+Route::get('/logeo_fin','UserController@logeo_fin');
+Route::get('/documentos_usuarios','UserController@documentos_usuarios');
+Route::get('/documentos_usuario','UserController@documentos_usuarios_busqueda');
