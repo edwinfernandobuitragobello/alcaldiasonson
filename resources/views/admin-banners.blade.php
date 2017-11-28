@@ -23,7 +23,7 @@
                                                 <td>{{$banner->titulo_banner}}</td>
                                                 <td>{{$banner->descripcion_banner}}</td>
                                                 <td class="text-center">
-                                                    <a onclick="editar_banner('{{$banner->id}}','{{$banner->titulo_banner}}','{!!$banner->descripcion_banner!!}')" href="#" data-toggle="modal" data-target="#editarBanner" title="Editar Banners" class="btn btn-effect-ripple btn-sm btn-success">Editar&nbsp;&nbsp;<i class="fa fa-pencil"></i></a>
+                                                    <a data-text="{!!$banner->descripcion_banner!!}" data-titulo="{!!$banner->titulo_banner!!}" data-id="{!!$banner->id!!}" href="#" data-toggle="modal" data-target="#editarBanner" title="Editar Banners" class="btn btn-effect-ripple btn-sm btn-success">Editar&nbsp;&nbsp;<i class="fa fa-pencil"></i></a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -71,11 +71,12 @@
                 </div>
             </div>
         </div>
-<script type="text/javascript">
-    function editar_banner(id,titulo_banner,descripcion_banner){
-        $("#id").val(id);
-        $("#titulo_banner").val(titulo_banner);
-        $("#descripcion_banner").val(descripcion_banner);
-    }
-</script>
+
 @include('footer-index')
+<script type="text/javascript">
+    $(".btn-success").click(function(){
+        $("#id").val($(this).data("id"));
+        $("#titulo_banner").val($(this).data("titulo"));
+        $("#descripcion_banner").val($(this).data("text"));
+    });
+</script>
