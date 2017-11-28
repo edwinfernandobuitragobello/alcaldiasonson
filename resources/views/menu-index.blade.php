@@ -24,22 +24,22 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="admin-nosotros.html">
+                                    <a href="{{url('/admin_nosotros')}}">
                                         <i class="fa fa-users sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Nosotros</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="admin-servicios.html">
+                                    <a href="{{url('/admin_servicios')}}">
                                         <i class="fa fa-child sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Servicios</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="admin-galeria.html">
+                                    <a href="{{url('/admin_galeria')}}">
                                         <i class="fa fa-picture-o sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Galería</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="admin-preguntas.html">
+                                    <a href="{{url('/admin_preguntas')}}">
                                         <i class="fa fa-question sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Preguntas</span>
                                     </a>
                                 </li>

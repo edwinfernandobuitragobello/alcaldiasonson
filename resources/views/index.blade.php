@@ -91,32 +91,15 @@
 		<!--Slider home-->
 		<div id="main-slider" class="carousel slide carousel-fade" data-ride="carousel">
 			<div class="carousel-inner">
-				<div class="item active">
-					<img src="{{ asset('imgIndex/banner1.jpg') }}" alt="Banner-1" class="banner img-responsive">
-					<div class="carousel-caption text-lite-color hidden-xs">
-						<h2 class="text-medium">Heading #1</h2>
-						<h5 class="text-light">With our 35 years of quality experience in financial advice.</h5>
-						<h5 class="text-light">We ensure you will be getting 100% best service.</h5>
+				@foreach($banners as $banner)
+					<div class="item <?php if($banner->id==1){ echo "active"; } ?> ">
+						<img src="{{ asset('imgIndex') }}/{{$banner->imagen_banner}}" alt="Banner-1" class="banner img-responsive">
+						<div class="carousel-caption text-lite-color hidden-xs">
+							<h2 class="text-medium">{{$banner->titulo_banner}}</h2>
+							<h5 class="text-light">{{$banner->descripcion_banner}}</h5>
+						</div>
 					</div>
-				</div>
-
-				<div class="item">
-					<img src="{{ asset('imgIndex/banner2.jpg') }}" alt="Banner-2" class="banner img-responsive">
-					<div class="carousel-caption inverse text-lite-color hidden-xs">
-						<h2 class="text-medium">Heading #2</h2>
-						<h5 class="text-light">With our 35 years of quality experience in financial advice.</h5>
-						<h5 class="text-light">We ensure you will be getting 100% best service.</h5>
-					</div>
-				</div>
-
-				<div class="item">
-					<img src="{{ asset('imgIndex/banner3.jpg') }}" alt="Banner-3" class="banner img-responsive">
-					<div class="carousel-caption text-lite-color hidden-xs">
-						<h2 class="text-medium">Heading #3</h2>
-						<h5 class="text-light">With our 35 years of quality experience in financial advice.</h5>
-						<h5 class="text-light">We ensure you will be getting 100% best service.</h5>
-					</div>
-				</div>
+				@endforeach
 			</div>
 
 			<a class="left carousel-control animation" href="#main-slider" role="button" data-slide="prev">
@@ -135,14 +118,13 @@
 			<h4 class="main-heading-1 text-spl-color text-normal text-uppercase">Nosotros</h4>
 				<div class="row text-center-xs">
 					<div class="col-sm-5 col-xs-12">
-						<img src="{{ asset('imgIndex/img1.jpg') }}" alt="" class="img-responsive img-style-1 img-center-xs">
+						<img src="{{ asset('imgIndex') }}/{{$nosotros->imagen_uno_nosotros}}" alt="" class="img-responsive img-style-1 img-center-xs">
 						<p class="hidden visible-xs"><br></p>
 					</div>
 
 					<div class="col-sm-7 col-xs-12">
 						<p class="lead"><b>¿Quiénes somos?</b></p>
-						<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum. There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum. There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum. There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum. There are many variations of passages of Lorem Ipsum available.</p>
-						<p>
+						<p>{{$nosotros->quienes_nosotros}}</p>
 					</div>
 				</div>
 
@@ -151,15 +133,14 @@
 				<div class="row text-center-xs">
 					<div class="col-sm-7 col-xs-12">
 						<p class="lead"><b>Misión</b></p>
-						<p>El Municipio de Sonsón, es un ente territorial que a través de la comunicación asertiva y transparente con la comunidad y la prestación eficiente y oportuna de los servicios sociales, promueve el desarrollo humano integral y da valor a lo público. Esto se hace posible gracias a un equipo humano que trabaja con compromiso y responsabilidad por un territorio más pacífico y con mayor equidad social.</p>
+						<p>{{$nosotros->mision_nosotros}}</p>
 						<p class="lead"><b>Visión</b></p>
-						<p>En el 2026 el Municipio de Sonsón será un territorio con una efectiva capacidad administrativa, política y económica, capaz de liderar procesos de planificación local y regional buscando garantizar los derechos fundamentales de los ciudadanos en la búsqueda bienestar y equidad social. Con vocación agropecuaria y turística capaz de vincularse a los mercados mundiales y de promover dinámicas socioeconómicas que contribuyan a la generación de ingresos. Conectado por una red vial segura, que permite la integración de la localidad y la región, y cuyos ecosistemas y biodiversidad, son protegidos y valorados como el escenario donde se promueve una mejor calidad de vida.</p>
-						<p>
+						<p>{{$nosotros->vision_nosotros}}</p>
 					</div>
 
 					<div class="col-sm-5 col-xs-12">
 						<p class="hidden visible-xs"><br></p><br><br>
-						<img src="{{ asset('') }}imgIndex/img2.jpg" alt="" class="img-responsive img-style-1 img-center-xs">
+						<img src="{{ asset('imgIndex') }}/{{$nosotros->imagen_dos_nosotros}}" alt="" class="img-responsive img-style-1 img-center-xs">
 					</div>
 				</div>
 			</div>
@@ -170,68 +151,20 @@
 			<div class="container text-center">
 				<h4 class="main-heading-1 text-spl-color text-center text-uppercase">Servicios</h4>
 				<center>
-					<p class="descriptionWidth">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum.</p>
+					<p class="descriptionWidth">{{$servicios1->descripcion_servicios}}</p>
 				</center>
 				<div class="row">
-					<div class="col-md-4 col-sm-6 col-xs-12">
-						<div class="box-1 sub">
-							<i class="fa fa-book"></i>
-							<h5 class="sub-heading-1 text-center">Financial Planning</h5>
-							<p class="text-grey-color">
-								There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.
-							</p>
+					@foreach($servicios2 as $servicios)
+						<div class="col-md-4 col-sm-6 col-xs-12">
+							<div class="box-1 sub">
+								<img src="{{ asset('imgIndex')}}/{{$servicios->imagen_servicios}}" width="100%" height="auto">
+								<h5 class="sub-heading-1 text-center">{{$servicios->titulo_servicios}}</h5>
+								<p class="text-grey-color">
+									{{$servicios->texto_servicios}}
+								</p>
+							</div>
 						</div>
-					</div>
-
-					<div class="col-md-4 col-sm-6 col-xs-12">
-						<div class="box-1 sub">
-							<i class="fa fa-dashboard"></i>
-							<h5 class="sub-heading-1 text-center">Marketing Plans</h5>
-							<p class="text-grey-color">
-								There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.
-							</p>
-						</div>
-					</div>
-
-					<div class="col-md-4 col-sm-6 col-xs-12">
-						<div class="box-1 sub">
-							<i class="fa fa-bullseye"></i>
-							<h5 class="sub-heading-1 text-center">Stock Market Research</h5>
-							<p class="text-grey-color">
-								There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.
-							</p>
-						</div>
-					</div>
-
-					<div class="col-md-4 col-sm-6 col-xs-12">
-						<div class="box-1 sub">
-							<i class="fa fa-briefcase"></i>
-							<h5 class="sub-heading-1 text-center">Tax Planning</h5>
-							<p class="text-grey-color">
-								There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.
-							</p>
-						</div>
-					</div>
-
-					<div class="col-md-4 col-sm-6 col-xs-12">
-						<div class="box-1 sub">
-							<i class="fa fa-line-chart"></i>
-							<h5 class="sub-heading-1 text-center">Risk Management</h5>
-							<p class="text-grey-color">
-								There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.
-							</p>
-						</div>
-					</div>
-
-					<div class="col-md-4 col-sm-6 col-xs-12">
-						<div class="box-1 sub">
-							<i class="fa fa-clock-o"></i>
-							<h5 class="sub-heading-1 text-center">University of Planning</h5>
-							<p class="text-grey-color">
-								There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.
-							</p>
-						</div>
-					</div>
+					@endforeach
 				</div>
 			</div>
 		</section>
@@ -241,96 +174,18 @@
 			<div class="main-container container text-center">
 			<h4 class="main-heading-1 text-spl-color text-center text-uppercase">Galeria</h4>
 
-				<ul class="row list-unstyled" id="gallery-grid">s
-					<li class="col-md-4 col-sm-6 col-xs-12 gallery-grid-item" data-groups='["all", "management"]'>
-						<div class="hover-content">
-							<img src="{{ asset('imgIndex/img1.jpg') }}" alt="" class="img-responsive img-center animation-1">
-							<div class="overlay animation text-lite-color">
-								<h6 class="text-uppercase animation-1">Project Name #1</h6>
-								<a href="{{ asset('imgIndex/img1.jpg') }}" class="btn btn-secondary animation-1"><i class="fa fa-search"></i></a>
+				<ul class="row list-unstyled" id="gallery-grid">
+					@foreach($galerias as $galeria)
+						<li class="col-md-4 col-sm-6 col-xs-12 gallery-grid-item" data-groups='["all", "management"]'>
+							<div class="hover-content">
+								<img src="{{ asset('imgIndex')}}/{{$galeria->imagen_galeria}}" alt="" class="img-responsive img-center animation-1">
+								<div class="overlay animation text-lite-color">
+									<h6 class="text-uppercase animation-1">{{$galeria->titulo_galeria}}</h6>
+									<a href="{{ asset('imgIndex')}}/{{$galeria->imagen_galeria}}" class="btn btn-secondary animation-1"><i class="fa fa-search"></i></a>
+								</div>
 							</div>
-						</div>
-					</li>
-
-					<li class="col-md-4 col-sm-6 col-xs-12 gallery-grid-item" data-groups='["all", "planning"]'>
-						<div class="hover-content">
-							<img src="{{ asset('') }}imgIndex/img2.jpg" alt="" class="img-responsive img-center animation-1">
-							<div class="overlay animation text-lite-color">
-								<h6 class="text-uppercase animation-1">Project Name #2</h6>
-								<a href="{{ asset('') }}imgIndex/img2.jpg" class="btn btn-secondary animation-1"><i class="fa fa-search"></i></a>
-							</div>
-						</div>
-					</li>
-
-					<li class="col-md-4 col-sm-6 col-xs-12 gallery-grid-item" data-groups='["all", "insurance"]'>
-						<div class="hover-content">
-							<img src="{{ asset('') }}imgIndex/img1.jpg" alt="" class="img-responsive img-center animation-1">
-							<div class="overlay animation text-lite-color">
-								<h6 class="text-uppercase animation-1">Project Name #3</h6>
-								<a href="{{ asset('') }}{{ asset('') }}imgIndex/img2.jpg" class="btn btn-secondary animation-1"><i class="fa fa-search"></i></a>
-							</div>
-						</div>
-					</li>
-
-					<li class="col-md-4 col-sm-6 col-xs-12 gallery-grid-item" data-groups='["all", "management"]'>
-						<div class="hover-content">
-							<img src="{{ asset('') }}imgIndex/img1.jpg" alt="" class="img-responsive img-center animation-1">
-							<div class="overlay animation text-lite-color">
-								<h6 class="text-uppercase animation-1">Project Name #1</h6>
-								<a href="{{ asset('') }}imgIndex/img1.jpg" class="btn btn-secondary animation-1"><i class="fa fa-search"></i></a>
-							</div>
-						</div>
-					</li>
-
-					<li class="col-md-4 col-sm-6 col-xs-12 gallery-grid-item" data-groups='["all", "planning"]'>
-						<div class="hover-content">
-							<img src="{{ asset('') }}imgIndex/img2.jpg" alt="" class="img-responsive img-center animation-1">
-							<div class="overlay animation text-lite-color">
-								<h6 class="text-uppercase animation-1">Project Name #2</h6>
-								<a href="{{ asset('') }}imgIndex/img2.jpg" class="btn btn-secondary animation-1"><i class="fa fa-search"></i></a>
-							</div>
-						</div>
-					</li>
-
-					<li class="col-md-4 col-sm-6 col-xs-12 gallery-grid-item" data-groups='["all", "insurance"]'>
-						<div class="hover-content">
-							<img src="{{ asset('') }}imgIndex/img1.jpg" alt="" class="img-responsive img-center animation-1">
-							<div class="overlay animation text-lite-color">
-								<h6 class="text-uppercase animation-1">Project Name #3</h6>
-								<a href="{{ asset('') }}imgIndex/img2.jpg" class="btn btn-secondary animation-1"><i class="fa fa-search"></i></a>
-							</div>
-						</div>
-					</li>
-
-					<li class="col-md-4 col-sm-6 col-xs-12 gallery-grid-item" data-groups='["all", "management"]'>
-						<div class="hover-content">
-							<img src="{{ asset('') }}imgIndex/img1.jpg" alt="" class="img-responsive img-center animation-1">
-							<div class="overlay animation text-lite-color">
-								<h6 class="text-uppercase animation-1">Project Name #1</h6>
-								<a href="{{ asset('') }}imgIndex/img1.jpg" class="btn btn-secondary animation-1"><i class="fa fa-search"></i></a>
-							</div>
-						</div>
-					</li>
-
-					<li class="col-md-4 col-sm-6 col-xs-12 gallery-grid-item" data-groups='["all", "planning"]'>
-						<div class="hover-content">
-							<img src="{{ asset('') }}imgIndex/img2.jpg" alt="" class="img-responsive img-center animation-1">
-							<div class="overlay animation text-lite-color">
-								<h6 class="text-uppercase animation-1">Project Name #2</h6>
-								<a href="{{ asset('') }}imgIndex/img2.jpg" class="btn btn-secondary animation-1"><i class="fa fa-search"></i></a>
-							</div>
-						</div>
-					</li>
-
-					<li class="col-md-4 col-sm-6 col-xs-12 gallery-grid-item" data-groups='["all", "insurance"]'>
-						<div class="hover-content">
-							<img src="{{ asset('') }}imgIndex/img1.jpg" alt="" class="img-responsive img-center animation-1">
-							<div class="overlay animation text-lite-color">
-								<h6 class="text-uppercase animation-1">Project Name #3</h6>
-								<a href="{{ asset('') }}imgIndex/img2.jpg" class="btn btn-secondary animation-1"><i class="fa fa-search"></i></a>
-							</div>
-						</div>
-					</li>
+						</li>
+					@endforeach
 				</ul>
 			</div>
 		</section>

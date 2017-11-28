@@ -38,5 +38,19 @@ Route::get('/index','IndexController@index');
 Route::get('/admin_banners','IndexController@admin_banners');
 Route::post('/banner_editar','IndexController@banner_editar');
 
+Route::get('/admin_nosotros','IndexController@admin_nosotros');
+Route::post('/nosotros_editar','IndexController@nosotros_editar');
+
+Route::get('/admin_servicios','IndexController@admin_servicios');
+Route::post('/servicios_editar1','IndexController@servicios_editar1');
+Route::post('/servicios_editar2','IndexController@servicios_editar2');
+
+Route::get('/admin_galeria','IndexController@admin_galeria');
+Route::post('/galeria_editar','IndexController@galeria_editar');
+
+Route::get('/admin_preguntas','IndexController@admin_preguntas');
+Route::post('/preguntas_editar1','IndexController@preguntas_editar1');
+Route::post('/preguntas_editar2','IndexController@preguntas_editar2');
+
 Route::get('/admin_enlaces','IndexController@admin_enlaces');
 
