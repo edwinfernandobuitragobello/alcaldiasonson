@@ -7,6 +7,7 @@ use App\Asignaciones;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Mail;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
 {
@@ -190,5 +191,26 @@ class UserController extends Controller
         mail('efbuitrago95@gmail.com', 'Solicitud de cuenta', 'Solicitud de cuenta para usuario con cedula: '.$request->cedula." Y correo electronico: ".$request->correo , $headers);
         //sechacienda@sonson-antioquia.gov.co
         return redirect()->back()->with('success', 'Email enviado con exito');
+    }
+    public function import_excel(Request $request){
+        Excel::load($request->excel, function($reader) {
+            $excel = $reader->get();
+            // iteracción
+            $reader->each(function($row) {
+                $usuario = new Usuarios();
+                $usuario->nombre_uno_usuario = $row->nombre_uno_usuario;
+                $usuario->nombre_dos_usuario = $row->nombre_dos_usuario;
+                $usuario->apellido_uno_usuario = $row->apellido_uno_usuario;
+                $usuario->apellido_dos_usuario = $row->apellido_dos_usuario;
+                $usuario->cedula_usuario = $row->cedula_usuario;
+                $usuario->catastro_usuario = $row->catastro_usuario;
+                $usuario->direccion_usuario = $row->direccion_usuario;
+                $usuario->telefono_usuario = $row->telefono_usuario;
+                $usuario->correo_usuario = $row->correo_usuario;
+                $usuario->contrasena = $row->contrasena;
+                $usuario->save();
+            });
+        });
+        return redirect()->back()->with('success', 'Usuario creado con exito');
     }
 }

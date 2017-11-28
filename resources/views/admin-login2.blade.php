@@ -26,14 +26,14 @@
             <div class="block animation-fadeInQuickInv">
                 <div class="block-title">
                     <div class="block-options pull-right">
-                        <a href="admin-login1.html" class="btn btn-effect-ripple btn-primary" data-toggle="tooltip" data-placement="left" title="Login">
+                        <a href="{{ url('/login') }}" class="btn btn-effect-ripple btn-primary" data-toggle="tooltip" data-placement="left" title="Login">
                             <i class="fa fa-user"></i>
                         </a>
                     </div>
                     <h2>Acceso</h2>
                 </div>
 
-                <form class="form-horizontal" id="form-login" accept-charset="utf-8" action="{{ url('/logeo') }}" method="POST" role="form">
+                <form class="form-horizontal" id="form-login" accept-charset="utf-8" action="{{ url('/solicitud_cuenta') }}" method="POST" role="form">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <div class="form-group">
                         <div class="col-xs-12">

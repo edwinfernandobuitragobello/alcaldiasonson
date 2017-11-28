@@ -4,6 +4,9 @@
                         <div class="block">
                             <h1 class="page-header margin-title">
                                 Usuarios
+                                <a href="" class="btn btn-success btn-crear btn-xs btn-effect-ripple" data-toggle="modal" data-target="#cargarExcel" style="margin-left: 10px">
+                                    EXCEL&nbsp;&nbsp;<i class="fa fa-upload" aria-hidden="true"></i>
+                                </a>
                                 <a href="" class="btn btn-success btn-crear btn-xs btn-effect-ripple" data-toggle="modal" data-target="#crearUsuario">
                                     CREAR USUARIO&nbsp;&nbsp;<i class="fa fa-plus" aria-hidden="true"></i>
                                 </a>
@@ -205,6 +208,34 @@
                             </center>
                         </div>
                     </form>
+                </div>
+            </div>
+        </div>
+        <!--Modal cargar excel-->
+        <div class="modal fade" id="cargarExcel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+            <div class="modal-dialog modal-admin" role="document">
+                <div class="modal-content">         
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">Cargar Excel</h4> 
+                    </div> 
+                    <div class="modal-body">                            
+                        <form method="post" action="{{url('import_excel')}}" enctype="multipart/form-data">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="message-text" class="control-label">Archivo</label>
+                                    <input type="file" id="" name="excel" class="filestyle" data-buttonName="btn-primary" data-buttonText="Seleccionar archivo" required><br>
+                                </div>
+                            </div><br>
+                            <div class="modal-footer">
+                                <center>
+                                    <button type="button" class="btn btn-warning" data-dismiss="modal">Cerrar</button>
+                                    <button type="submit" id="crearUsu" class="btn btn-primary">Guardar</button>
+                                </center>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

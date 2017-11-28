@@ -16,6 +16,7 @@ Route::get('/usuarios','UserController@usuarios_busqueda');
 Route::post('/usuarios_crear','UserController@usuarios_crear');
 Route::post('/usuarios_editar','UserController@usuarios_editar');
 Route::get('/usuarios_eliminar/{id?}','UserController@usuarios_eliminar');
+Route::post('/import_excel','UserController@import_excel');
 
 Route::get('/documentos','UserController@asignaciones');
 Route::get('/documento','UserController@asignaciones_busqueda');
@@ -31,3 +32,11 @@ Route::get('/documentos_usuario','UserController@documentos_usuarios_busqueda');
 
 Route::get('/solicitud','UserController@solicitud');
 Route::post('/solicitud_cuenta','UserController@solicitud_cuenta');
+
+Route::get('/index','IndexController@index');
+
+Route::get('/admin_banners','IndexController@admin_banners');
+Route::post('/banner_editar','IndexController@banner_editar');
+
+Route::get('/admin_enlaces','IndexController@admin_enlaces');
+
