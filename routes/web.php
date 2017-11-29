@@ -52,5 +52,14 @@ Route::get('/admin_preguntas','IndexController@admin_preguntas');
 Route::post('/preguntas_editar1','IndexController@preguntas_editar1');
 Route::post('/preguntas_editar2','IndexController@preguntas_editar2');
 
+Route::get('/admin_testimonios','IndexController@admin_testimonios');
+Route::post('/testimonios_editar','IndexController@testimonios_editar');
+
 Route::get('/admin_enlaces','IndexController@admin_enlaces');
+Route::post('/enalces_editar','IndexController@enalces_editar');
+
+Route::get('/admin_contacto','IndexController@admin_contacto');
+Route::post('/contacto_editar','IndexController@contacto_editar');
+
+Route::post('/enviar_email','IndexController@enviar_email');
 

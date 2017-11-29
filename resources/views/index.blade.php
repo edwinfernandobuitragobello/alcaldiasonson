@@ -30,7 +30,7 @@
 					<li><a href="https://www.youtube.com/channel/UCGMNstXJnlthnxHFEhhcRhw"><i class="fa fa-youtube-play"></i></a></li>
 				</ul>
 				<p class="pull-right-lg pull-right-md pull-right-sm text-right-lg text-right-md text-right-sm text-light">
-					<a href="#" target="_blank"><b>Inicio de sesión</b></a>
+					<a href="{{ url('/login') }}" ><b>Inicio de sesión</b></a>
 				</p>
 			</div>
 		</div>
@@ -194,108 +194,59 @@
 		<section id="preguntas1" class="section-area">
 			<div class="container text-center-xs">
 				<div class="row">
-				<h4 class="main-heading-1 text-spl-color text-center text-uppercase marginTop">Preguntas frecuentes</h4>
-				<center>
-					<p class="descriptionWidth">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum.</p>
-				</center>
+					<h4 class="main-heading-1 text-spl-color text-center text-uppercase marginTop">Preguntas frecuentes</h4>
+					<center>
+						<p class="descriptionWidth">{{$preguntas1->descripcion_preguntas}}</p>
+					</center>
 
-				<div class="col-md-6 col-xs-12">
+					<div class="col-md-6 col-xs-12">
 						<div class="panel-group" id="accordion-faqs">
-							<div class="panel flat">
-								<div class="panel-heading flat">
-									<h5 class="panel-title">
-										<a data-toggle="collapse" data-parent="#accordion-faqs" href="#collapse1">
-											How do you calculate your rates?
-										</a>
-									</h5>
-								</div>
-								<div id="collapse1" class="panel-collapse collapse">
-									<div class="panel-body">
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco quat. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+							<?php $i = 0; ?>
+							@foreach($preguntas2 as $preguntas)
+								<?php $i++ ?>
+								<?php if($i<=3){ ?>
+									<div class="panel flat">
+										<div class="panel-heading flat">
+											<h5 class="panel-title">
+												<a data-toggle="collapse" data-parent="#accordion-faqs" href="#collapse<?php echo $i; ?>">
+													{{$preguntas->titulo_preguntas}}
+												</a>
+											</h5>
+										</div>
+										<div id="collapse<?php echo $i; ?>" class="panel-collapse collapse">
+											<div class="panel-body">
+												<p>{{$preguntas->respuesta_preguntas}}</p>
+											</div>
+										</div>					
 									</div>
-								</div>					
-							</div>
-
-							<div class="panel flat">
-								<div class="panel-heading flat">
-									<h5 class="panel-title">
-										<a data-toggle="collapse" data-parent="#accordion-faqs" href="#collapse2">
-											What is Lorem Ipsum?
-										</a>
-									</h5>
-								</div>
-								<div id="collapse2" class="panel-collapse collapse">
-									<div class="panel-body">
-										<p>Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
-									</div>
-								</div>						
-							</div>
-
-							<div class="panel flat">
-								<div class="panel-heading flat">
-									<h5 class="panel-title">
-										<a data-toggle="collapse" data-parent="#accordion-faqs" href="#collapse3">
-											It is a long established fact that a reader ?
-										</a>
-									</h5>
-								</div>
-
-								<div id="collapse3" class="panel-collapse collapse">
-									<div class="panel-body">
-										<p>Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
-									</div>
-								</div>					
-							</div>
+								<?php } ?>
+							@endforeach
 						</div>
 					</div>
 
 					<div class="col-md-6 col-xs-12">
 						<div class="panel-group" id="accordion-faqs">
-							<div class="panel flat">
-								<div class="panel-heading flat">
-									<h5 class="panel-title">
-										<a data-toggle="collapse" data-parent="#accordion-faqs" href="#collapse8">
-											It is a long established fact that a reader ?
-										</a>
-									</h5>
-								</div>
-
-								<div id="collapse8" class="panel-collapse collapse">
-									<div class="panel-body">
-										<p>Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
+							<?php $i = 0; ?>
+							@foreach($preguntas2 as $preguntas)
+								<?php $i++ ?>
+								<?php if($i>=4){ ?>
+								<div class="panel flat">
+									<div class="panel-heading flat">
+										<h5 class="panel-title">
+											<a data-toggle="collapse" data-parent="#accordion-faqs" href="#collapse<?php echo $i; ?>">
+												{{$preguntas->titulo_preguntas}}
+											</a>
+										</h5>
 									</div>
-								</div>					
-							</div>
 
-							<div class="panel flat">
-								<div class="panel-heading flat">
-									<h5 class="panel-title">
-										<a data-toggle="collapse" data-parent="#accordion-faqs" href="#collapse9">
-											Where can I get some?
-										</a>
-									</h5>
+									<div id="collapse<?php echo $i; ?>" class="panel-collapse collapse">
+										<div class="panel-body">
+											<p>{{$preguntas->respuesta_preguntas}}</p>
+										</div>
+									</div>					
 								</div>
-								<div id="collapse9" class="panel-collapse collapse">
-									<div class="panel-body">
-										<p>Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
-									</div>
-								</div>					
-							</div>
-
-							<div class="panel flat">
-								<div class="panel-heading flat">
-									<h5 class="panel-title">
-										<a data-toggle="collapse" data-parent="#accordion-faqs" href="#collapse10">
-											Where does it come from?
-										</a>
-									</h5>
-								</div>
-								<div id="collapse10" class="panel-collapse collapse">
-									<div class="panel-body">
-										<p>Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
-									</div>
-								</div>					
-							</div>
+								<?php } ?>
+							@endforeach
 						</div>
 					</div>
 				</div>
@@ -310,166 +261,82 @@
 					<div class="carousel-inner text-center-sm">
 						<div class="item active">
 							<div class="row">
-								<div class="col-sm-4 col-xs-12">
-									<div class="testimonial-box">
-										<p class="text-light">
-											There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.
-										</p>
-										<ul class="list-unstyled clearfix">
-											<li class="pull-left-lg pull-left-md">
-												<img src="{{ asset('') }}imagesIndex/thumb-img1.jpg" alt="" class="img-responsive img-center-sm img-center-xs circle">
-											</li>
-											<li class="pull-left-lg pull-left-md">
-												<h6 class="text-spl-color text-medium">Sainath Chillapuram</h6>
-												<span class="text-grey-color text-light">KKR Industries</span>
-											</li>
-										</ul>
-									</div>
-								</div>
-
-								<div class="col-sm-4 col-xs-12">
-									<div class="testimonial-box">
-										<p class="text-light">
-											There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.
-										</p>
-										<ul class="list-unstyled clearfix">
-											<li class="pull-left-lg pull-left-md">
-												<img src="{{ asset('') }}imagesIndex/thumb-img1.jpg" alt="" class="img-responsive img-center-sm img-center-xs circle">
-											</li>
-											<li class="pull-left-lg pull-left-md">
-												<h6 class="text-spl-color text-medium">Sainath Chillapuram</h6>
-												<span class="text-grey-color text-light">KKR Industries</span>
-											</li>
-										</ul>
-									</div>
-								</div>
-
-								<div class="col-sm-4 col-xs-12">
-									<div class="testimonial-box">
-										<p class="text-light">
-											There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.
-										</p>
-										<ul class="list-unstyled clearfix">
-											<li class="pull-left-lg pull-left-md">
-												<img src="imagesIndex/thumb-img1.jpg" alt="" class="img-responsive img-center-sm img-center-xs circle">
-											</li>
-											<li class="pull-left-lg pull-left-md">
-												<h6 class="text-spl-color text-medium">Sainath Chillapuram</h6>
-												<span class="text-grey-color text-light">KKR Industries</span>
-											</li>
-										</ul>
-									</div>
-								</div>
+								<?php $i = 0; ?>
+								@foreach($testimonios as $testimonio)
+									<?php $i++ ?>
+									<?php if($i<=3){ ?>
+										<div class="col-sm-4 col-xs-12">
+											<div class="testimonial-box">
+												<p class="text-light">
+													{{$testimonio->descripcion_testimonios}}
+												</p>
+												<ul class="list-unstyled clearfix">
+													<li class="pull-left-lg pull-left-md">
+														<img src="{{ asset('imgIndex')}}/{{$testimonio->imagen_testimonios}}" alt="" class="img-responsive img-center-sm img-center-xs circle">
+													</li>
+													<li class="pull-left-lg pull-left-md">
+														<h6 class="text-spl-color text-medium">{{$testimonio->nombre_testimonios}}</h6>
+														<span class="text-grey-color text-light">{{$testimonio->cargo_testimonios}}</span>
+													</li>
+												</ul>
+											</div>
+										</div>
+									<?php } ?>
+								@endforeach
 							</div>						
 						</div>
 
 						<div class="item">
 							<div class="row">
-								<div class="col-sm-4 col-xs-12">
-									<div class="testimonial-box">
-										<p class="text-light">
-											There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.
-										</p>
-										<ul class="list-unstyled clearfix">
-											<li class="pull-left-lg pull-left-md">
-												<img src="imagesIndex/thumb-img1.jpg" alt="" class="img-responsive img-center-sm img-center-xs circle">
-											</li>
-											<li class="pull-left-lg pull-left-md">
-												<h6 class="text-spl-color text-medium">Sainath Chillapuram</h6>
-												<span class="text-grey-color text-light">KKR Industries</span>
-											</li>
-										</ul>
-									</div>
-								</div>
-
-								<div class="col-sm-4 col-xs-12">
-									<div class="testimonial-box">
-										<p class="text-light">
-											There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.
-										</p>
-										<ul class="list-unstyled clearfix">
-											<li class="pull-left-lg pull-left-md">
-												<img src="imagesIndex/thumb-img1.jpg" alt="" class="img-responsive img-center-sm img-center-xs circle">
-											</li>
-											<li class="pull-left-lg pull-left-md">
-												<h6 class="text-spl-color text-medium">Sainath Chillapuram</h6>
-												<span class="text-grey-color text-light">KKR Industries</span>
-											</li>
-										</ul>
-									</div>
-								</div>
-
-								<div class="col-sm-4 col-xs-12">
-									<div class="testimonial-box">
-										<p class="text-light">
-											There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.
-										</p>
-										<ul class="list-unstyled clearfix">
-											<li class="pull-left-lg pull-left-md">
-												<img src="imagesIndex/thumb-img1.jpg" alt="" class="img-responsive img-center-sm img-center-xs circle">
-											</li>
-											<li class="pull-left-lg pull-left-md">
-												<h6 class="text-spl-color text-medium">Sainath Chillapuram</h6>
-												<span class="text-grey-color text-light">KKR Industries</span>
-											</li>
-										</ul>
-									</div>
-								</div>
+								<?php $i = 0; ?>
+								@foreach($testimonios as $testimonio)
+									<?php $i++ ?>
+									<?php if(($i>=4) AND ($i<=6) ){ ?>
+										<div class="col-sm-4 col-xs-12">
+											<div class="testimonial-box">
+												<p class="text-light">
+													{{$testimonio->descripcion_testimonios}}
+												</p>
+												<ul class="list-unstyled clearfix">
+													<li class="pull-left-lg pull-left-md">
+														<img src="{{ asset('imgIndex')}}/{{$testimonio->imagen_testimonios}}" alt="" class="img-responsive img-center-sm img-center-xs circle">
+													</li>
+													<li class="pull-left-lg pull-left-md">
+														<h6 class="text-spl-color text-medium">{{$testimonio->nombre_testimonios}}</h6>
+														<span class="text-grey-color text-light">{{$testimonio->cargo_testimonios}}</span>
+													</li>
+												</ul>
+											</div>
+										</div>
+									<?php } ?>
+								@endforeach
 							</div>						
 						</div>
 
 						<div class="item">
 							<div class="row">
-								<div class="col-sm-4 col-xs-12">
-									<div class="testimonial-box">
-										<p class="text-light">
-											There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.
-										</p>
-										<ul class="list-unstyled clearfix">
-											<li class="pull-left-lg pull-left-md">
-												<img src="imagesIndex/thumb-img1.jpg" alt="" class="img-responsive img-center-sm img-center-xs circle">
-											</li>
-											<li class="pull-left-lg pull-left-md">
-												<h6 class="text-spl-color text-medium">Sainath Chillapuram</h6>
-												<span class="text-grey-color text-light">KKR Industries</span>
-											</li>
-										</ul>
-									</div>
-								</div>
-
-								<div class="col-sm-4 col-xs-12">
-									<div class="testimonial-box">
-										<p class="text-light">
-											There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.
-										</p>
-										<ul class="list-unstyled clearfix">
-											<li class="pull-left-lg pull-left-md">
-												<img src="imagesIndex/thumb-img1.jpg" alt="" class="img-responsive img-center-sm img-center-xs circle">
-											</li>
-											<li class="pull-left-lg pull-left-md">
-												<h6 class="text-spl-color text-medium">Sainath Chillapuram</h6>
-												<span class="text-grey-color text-light">KKR Industries</span>
-											</li>
-										</ul>
-									</div>
-								</div>
-
-								<div class="col-sm-4 col-xs-12">
-									<div class="testimonial-box">
-										<p class="text-light">
-											There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.
-										</p>
-										<ul class="list-unstyled clearfix">
-											<li class="pull-left-lg pull-left-md">
-												<img src="imagesIndex/thumb-img1.jpg" alt="" class="img-responsive img-center-sm img-center-xs circle">
-											</li>
-											<li class="pull-left-lg pull-left-md">
-												<h6 class="text-spl-color text-medium">Sainath Chillapuram</h6>
-												<span class="text-grey-color text-light">KKR Industries</span>
-											</li>
-										</ul>
-									</div>
-								</div>
+								<?php $i = 0; ?>
+								@foreach($testimonios as $testimonio)
+									<?php $i++ ?>
+									<?php if ($i>=7) { ?>
+										<div class="col-sm-4 col-xs-12">
+											<div class="testimonial-box">
+												<p class="text-light">
+													{{$testimonio->descripcion_testimonios}}
+												</p>
+												<ul class="list-unstyled clearfix">
+													<li class="pull-left-lg pull-left-md">
+														<img src="{{ asset('imgIndex')}}/{{$testimonio->imagen_testimonios}}" alt="" class="img-responsive img-center-sm img-center-xs circle">
+													</li>
+													<li class="pull-left-lg pull-left-md">
+														<h6 class="text-spl-color text-medium">{{$testimonio->nombre_testimonios}}</h6>
+														<span class="text-grey-color text-light">{{$testimonio->cargo_testimonios}}</span>
+													</li>
+												</ul>
+											</div>
+										</div>
+									<?php } ?>
+								@endforeach
 							</div>						
 						</div>
 					</div>
@@ -486,36 +353,13 @@
 		<div class="partners-list">
 			<div class="container">
 				<ul class="list-unstyled row">
-					<li class="col-xs-2">
-						<a href="" target="_blank">
-							<img src="imgIndex/client-logo-1.png" alt="" class="img-responsive img-center">
-						</a>
-					</li>
-					<li class="col-xs-2">
-						<a href="" target="_blank">
-							<img src="imgIndex/client-logo-1.png" alt="" class="img-responsive img-center">
-						</a>
-					</li>
-					<li class="col-xs-2">
-						<a href="" target="_blank">
-							<img src="imgIndex/client-logo-1.png" alt="" class="img-responsive img-center">
-						</a>
-					</li>
-					<li class="col-xs-2">
-						<a href="" target="_blank">
-							<img src="imgIndex/client-logo-1.png" alt="" class="img-responsive img-center">
-						</a>
-					</li>
-					<li class="col-xs-2">
-						<a href="" target="_blank">
-							<img src="imgIndex/client-logo-1.png" alt="" class="img-responsive img-center">
-						</a>
-					</li>
-					<li class="col-xs-2">
-						<a href="" target="_blank">
-							<img src="imgIndex/client-logo-1.png" alt="" class="img-responsive img-center">
-						</a>
-					</li>
+					@foreach($enlaces as $enlace)
+						<li class="col-xs-2">
+							<a href="{{$enlace->link_enlaces}}" target="_blank">
+								<img src="{{ asset('imgIndex')}}/{{$enlace->imagen_enlaces}}" alt="{{$enlace->titulo_enlaces}}" class="img-responsive img-center">
+							</a>
+						</li>
+					@endforeach
 				</ul>
 			</div>
 		</div><br><br><br>
@@ -526,34 +370,35 @@
 				<div class="col-sm-8 col-xs-12">
 					<h4 class="main-heading-1 text-spl-color text-uppercase text-normal">Contáctanos</h4>
 					<div class="contact-form-wrap">
-						<form action="" method="" id="main-contact-form" name="contact-form" class="contact-form" role="form">
+						<form class="contact-form" action="{{ url('/enviar_email') }}" method="POST" role="form">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
 							<div class="row">
 
 								<div class="col-sm-6 col-xs-12">
 									<div class="form-group">
 										<label for="fname" class="sr-only">Nombres: </label>
-										<input type="text" class="form-control flat" name="" id="" required="required" maxlength="45" placeholder="Nombres">
+										<input type="text" class="form-control flat" name="nombre_correo" id="" required="required" maxlength="45" placeholder="Nombres">
 									</div>
 								</div>
 
 								<div class="col-sm-6 col-xs-12">
 									<div class="form-group">
 										<label for="lname" class="sr-only">Apellidos: </label>
-										<input type="text" class="form-control flat" name="" id="" required="required" maxlength="45" placeholder="Apellidos">
+										<input type="text" class="form-control flat" name="Apellidos_correo" id="" required="required" maxlength="45" placeholder="Apellidos">
 									</div>
 								</div>
 
 								<div class="col-xs-12">
 									<div class="form-group">
 										<label for="email" class="sr-only">Correo: </label>
-										<input type="email" class="form-control flat" name="" id="" required="required" maxlength="45" placeholder="Correo">
+										<input type="email" class="form-control flat" name="correo_correo" id="" required="required" maxlength="45" placeholder="Correo">
 									</div>
 								</div>
 
 								<div class="col-xs-12">
 									<div class="form-group">
 										<label for="message" class="sr-only">Mensaje: </label>
-										<textarea class="form-control flat textArea" rows="8" name="" id="" required="required" maxlength="900" placeholder="Mensaje"></textarea>
+										<textarea class="form-control flat textArea" rows="8" name="mensaje_correo" id="" required="required" maxlength="900" placeholder="Mensaje"></textarea>
 									</div>
 								</div>
 
@@ -577,41 +422,37 @@
 								<i class="fa fa-map-marker pull-left"></i> 
 								<span class="pull-left">
 									<b>Dirección:</b><br> 
-									Carrera 6 No. 6 - 58 Plaza Principal<br>
-									"Ruiz y Zapata", Sonsón - Antioquia
+									{{$contactos->direccion_contactos}}
 								</span>
 							</li>
 							<li class="clearfix">
 								<i class="fa fa-phone pull-left"></i> 
 								<span class="pull-left">
 									<b>Teléfono:</b><br>
-									86944444 - 8691340 / Ext 118
+									{{$contactos->telefono_contactos}}
 								</span>
 							</li>
 							<li class="clearfix">
 								<i class="fa fa-envelope pull-left"></i> 
 								<span class="pull-left">
 									<b>Correo:</b><br> 
-									<a href="mailto:sechacienda@sonson.antioquia.gov.co" class="colorBlue">sechacienda@sonson.antioquia.gov.co</a>
+									<a href="mailto:{{$contactos->correo_contactos}}" class="colorBlue">{{$contactos->correo_contactos}}</a>
 								</span>
 							</li>
 							<li class="clearfix">
 								<i class="fa fa-clock-o pull-left"></i> 
 								<span class="pull-left">
 									<b>Horario de atención:</b><br> 
-									- Lunes, Martes, Jueves y Viernes:<br> 
-									8:00 am - 12:00 m y 2:00 pm - 6:00 pm<br><br>
-									- Miércoles y Sábados: <br>
-									8:00 am - 2:00 pm 
+									{{$contactos->horario_contactos}} 
 								</span>
 							</li>
 							<li class="clearfix">
 								<i class="fa fa-thumbs-o-up pull-left"></i> 
 								<span class="pull-left lineHeight">
 									<b>Síguenos en:</b><br>
-									<a href="https://www.facebook.com/sonsonprogresa/"><i class="fa fa-facebook" style="font-size: 30px;"></i></a>
-									<a href="https://twitter.com/sonsonprogresa"><i class="fa fa-twitter" style="font-size: 30px;"></i></a>
-									<a href="https://www.youtube.com/channel/UCGMNstXJnlthnxHFEhhcRhw"><i class="fa fa-youtube-play" style="font-size: 30px;"></i></a>
+									<a href="{{$contactos->facebook_contactos}}"><i class="fa fa-facebook" style="font-size: 30px;"></i></a>
+									<a href="{{$contactos->twitter_contactos}}"><i class="fa fa-twitter" style="font-size: 30px;"></i></a>
+									<a href="{{$contactos->youtube_contactos}}"><i class="fa fa-youtube-play" style="font-size: 30px;"></i></a>
 								</span>
 							</li>
 						</ul>
@@ -635,40 +476,37 @@
 								<i class="fa fa-map-marker"></i> 
 								<span>
 									<b>Dirección</b><br>
-									Carrera 6 No. 6 - 58 <br>
-									Plaza Principal "Ruiz y Zapata", Sonsón - Antioquia
+									{{$contactos->direccion_contactos}}
 								</span>
 							</li>
 							<li class="clearfix">
 								<i class="fa fa-phone"></i> 
 								<span>
 									<b>Teléfono</b><br>
-									86944444 - 8691340 / Ext 118
+									{{$contactos->telefono_contactos}}
 								</span>
 							</li>
 							<li class="clearfix">
 								<i class="fa fa-envelope"></i>
 								<span>
 									<b>Correo</b><br>
-									<a href="mailto:sechacienda@sonson.antioquia.gov.co">sechacienda@sonson.antioquia.gov.co</a>
+									<a href="mailto:{{$contactos->correo_contactos}}">{{$contactos->correo_contactos}}</a>
 								</span> 
 							</li>
 							<li class="clearfix">
 								<i class="fa fa-clock-o"></i> 
 								<span>
 									<b>Horario de atención</b><br>
-									Lunes, Martes, Jueves y Viernes:<br> 
-									8:00 am - 12:00 m y 2:00 pm - 6:00 pm<br>
-									Miércoles y Sábados: 8:00 am - 2:00 pm 
+									{{$contactos->horario_contactos}}
 								</span>
 							</li>
 							<li class="clearfix">
 								<i class="fa fa-thumbs-o-up"></i> 
 								<span>
 									<b>Síguenos en:</b><br>
-									<a href="https://www.facebook.com/sonsonprogresa/"><i class="fa fa-facebook" style="font-size: 25px;"></i></a>
-									<a href="https://twitter.com/sonsonprogresa"><i class="fa fa-twitter" style="font-size: 25px;"></i></a>
-									<a href="https://www.youtube.com/channel/UCGMNstXJnlthnxHFEhhcRhw"><i class="fa fa-youtube-play" style="font-size: 25px;"></i>
+									<a href="{{$contactos->facebook_contactos}}"><i class="fa fa-facebook" style="font-size: 25px;"></i></a>
+									<a href="{{$contactos->twitter_contactos}}"><i class="fa fa-twitter" style="font-size: 25px;"></i></a>
+									<a href="{{$contactos->youtube_contactos}}"><i class="fa fa-youtube-play" style="font-size: 25px;"></i>
 								</span>
 							</li>
 						</ul>
@@ -677,12 +515,9 @@
 					<div class="col-md-3 col-sm-6 col-xs-12">
 						<h5>Servicios</h5>
 						<ul class="list-unstyled foot-list-style-1 text-light">
-							<li>Investment Management</li>
-							<li>Retirement Planning</li>
-							<li>Long Term Care</li>
-							<li>Estate Planning</li>
-							<li>Social Security</li>
-							<li>Social Security</li>
+							@foreach($servicios2 as $servicios)
+								<li>{{$servicios->titulo_servicios}}</li>
+							@endforeach			
 						</ul>
 					</div>
 
@@ -703,20 +538,20 @@
 			</div>
 		</footer>
 
-		<script src="jsIndex/jquery-1.12.4.min.js"></script>
-		<script src="jsIndex/jquery-migrate-1.4.1.min.js"></script>	
-		<script src="jsIndex/bootstrap.min.js"></script>
-		<script src="jsIndex/plugins/backstretch/jquery.backstretch.min.js"></script>
-		<script src="jsIndex/plugins/shuffle/jquery.shuffle.modernizr.min.js"></script>
-		<script src="jsIndex/plugins/owl-carousel/owl.carousel.js"></script>
-		<script src="jsIndex/plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
-		<script src="jsIndex/custom.js"></script>
+		<script src="{{ asset('jsIndex/jquery-1.12.4.min.js') }}"></script>
+		<script src="{{ asset('jsIndex/jquery-migrate-1.4.1.min.js') }}"></script>	
+		<script src="{{ asset('jsIndex/bootstrap.min.js') }}"></script>
+		<script src="{{ asset('jsIndex/plugins/backstretch/jquery.backstretch.min.js') }}"></script>
+		<script src="{{ asset('jsIndex/plugins/shuffle/jquery.shuffle.modernizr.min.js') }}"></script>
+		<script src="{{ asset('jsIndex/plugins/owl-carousel/owl.carousel.js') }}"></script>
+		<script src="{{ asset('jsIndex/plugins/magnific-popup/jquery.magnific-popup.min.js') }}"></script>
+		<script src="{{ asset('jsIndex/custom.js') }}"></script>
 
 		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBsBJuX7MUGkO38AxIIn0K4rIZV5kba7M0&callback=initMap"></script>	
 		<script type="text/javascript">
 			//Map
 	        function initMap() {
-	            var position = {lat: 5.712002, lng: -75.309798};
+	            var position = {lat: {{$contactos->latitud_contactos}}, lng: {{$contactos->logitud_contactos}}};
 	            var map = new google.maps.Map(document.getElementById('map'), {
 	                zoom: 14,
 	                center: position,

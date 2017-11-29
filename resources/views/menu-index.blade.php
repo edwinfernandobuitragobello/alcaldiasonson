@@ -44,17 +44,17 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="admin-testimonios.html">
+                                    <a href="{{url('/admin_testimonios')}}">
                                         <i class="fa fa-comments sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Testimonios</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="admin-enlaces.html">
+                                    <a href="{{url('/admin_enlaces')}}">
                                         <i class="fa fa-link sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Enlaces</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="admin-contacto.html">
+                                    <a href="{{url('/admin_contacto')}}">
                                         <i class="fa fa-phone sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Contacto</span>
                                     </a>
                                 </li>
@@ -76,7 +76,7 @@
 
                         <ul class="nav navbar-nav-custom pull-right">
                             <li class="dropdown">
-                                <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" style="padding-right: 20px">
+                                <a href="{{ url('/logeo_fin') }}" style="padding-right: 20px">
                                     Cerrar Sesión&nbsp;&nbsp;<i class="fa fa-power-off"></i>
                                 </a>
                             </li>

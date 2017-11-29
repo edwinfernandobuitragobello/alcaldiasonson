@@ -28,6 +28,8 @@ class UserController extends Controller
                     $_SESSION['id_login'] = $posibles[$i]['id'];
                     if ($posibles[$i]['id']==1) {
                         return redirect('/');
+                    }elseif ($posibles[$i]['id']==2) {
+                        return redirect('/admin_banners');
                     }else{
                         return redirect('/documentos_usuarios');
                     }
